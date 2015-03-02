@@ -9,7 +9,10 @@ import Control.Applicative
 import Norm
 
 data ProbDist a = ProbDist [(a, Double)]
-	deriving (Eq, Ord, Show)
+	deriving (Eq, Show)
+
+instance (Ord a) => Ord (ProbDist a) where
+	compare (ProbDist xs) (ProbDist ys) = compare (sortBy (compare `on` fst) xs) (sortBy (compare `on` snd) ys)
 
 instance Functor ProbDist where
 	fmap f = ProbDist . map (\(x, y) -> (f x, y)) . getPairs
@@ -22,9 +25,8 @@ instance Applicative ProbDist where
 	pure = return
 	(<*>) = ap
 
--- assumes ordering is the same
-instance Norm (ProbDist a) where
-	add x y = ProbDist $ zip (getEvents x) $ map (uncurry (+)) $ zip (getProbs x) (getProbs y)
+instance (Ord a) => Norm (ProbDist a) where
+	add x y = ProbDist $ zip (getEvents $ canonicalOrder x) $ map (uncurry (+)) $ zip (getProbs $ canonicalOrder x) (getProbs $ canonicalOrder y)
 	scale d = ProbDist . map (\(y, z) -> (y, d * z)) . getPairs
 	norm = norm . getProbs
 
@@ -36,6 +38,9 @@ getEvents (ProbDist x) = map fst x
 
 getProbs :: ProbDist a -> [Double]
 getProbs (ProbDist x) = map snd x
+
+canonicalOrder :: (Ord a) => ProbDist a -> ProbDist a
+canonicalOrder (ProbDist xs) = ProbDist (sortBy (compare `on` fst) xs)
 
 -- this is just the monadic join
 flatten :: ProbDist (ProbDist a) -> ProbDist a

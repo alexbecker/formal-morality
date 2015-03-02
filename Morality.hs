@@ -33,7 +33,7 @@ veilMinusSelf theory state = scale (1.0 / fromIntegral (length theory - 1)) $ fo
 
 -- judges which state is Just (punnyness >9000), or Nothing
 judge :: MoralTheory -> PossibleState -> PossibleState -> Maybe PossibleState
-judge theory state1 state2 = case (comp (canonicalOrder $ veil theory state1) (canonicalOrder $ veil theory state2), comp (canonicalOrder $ veilMinusSelf theory state1) (canonicalOrder $ veilMinusSelf theory state2)) of
+judge theory state1 state2 = case (comp (veil theory state1) (veil theory state2), comp (veilMinusSelf theory state1) (veilMinusSelf theory state2)) of
 	(PGT, PGT) -> Just state1
 	(PLT, PLT) -> Just state2
 	_ -> Nothing

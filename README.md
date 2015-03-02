@@ -45,7 +45,8 @@ your being in love from your perspective is qualitatively the same as my being i
 but perhaps your experience of writing Haskell is not the same as mine.
 
 A moral theory is constructed by linking together the states of the world from each person's perspective,
-using their recognition of other's perspectives. If everyone values their equivalent for A over their
+using their recognition of other's perspectives, forming the *Consensus Family*. 
+If everyone values their equivalent for A over their
 equivalent for B, I believe that this automatically imposes a moral weight of A over B on 
 every member of the community. This seems natural because it obeys the values and mutual recognition
 of every member.
@@ -54,8 +55,8 @@ Given a choice between probability distributions A and B, choosing A is a moral 
 if the following conditions hold:
 
 1. (Consensus Behind the Veil) When randomized uniformly across the equivalent states for all members 
-of the community, everyone holds the randomized version of A to be at least as valuable as the
-randomized version of B, and at least 1 person holds it to be moreso.
+of the community, the randomized version of A is ≥ the randomized version of B in the subset
+of that person's preorder contained in the Consensus Family, and the reverse (with B and A switched) is not true.
 
 2. (No Duty to Self) The same holds when the person choosing is omitted, the same holds.
 

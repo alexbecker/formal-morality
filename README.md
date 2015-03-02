@@ -58,7 +58,7 @@ if the following conditions hold:
 of the community, the randomized version of A is ≥ the randomized version of B in the subset
 of that person's preorder contained in the Consensus Family, and the reverse (with B and A switched) is not true.
 
-2. (No Duty to Self) The same holds when the person choosing is omitted, the same holds.
+2. (No Duty to Self) The same holds when the person choosing is omitted.
 
 3. (Self-Preservation) The choice of A over B does not pose a significant risk of compromising the person's
 membership in the moral community, e.g. by killing them or by so emotionally damaging them that they
